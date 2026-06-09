@@ -4,7 +4,7 @@ Fiji Script: Assign Position and Group for Square ROIs
 ============================================================
 
 Author: Jing He (贺靖)
-Affiliation: Ocean University of China, Ocean College
+Affiliation: Ocean University of China
 Version: v1.1
 Date: 2026-04-14
 

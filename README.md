@@ -3,11 +3,11 @@
 Jing He 
 jinghe@stu.ouc.edu.cn
 
-ImageJ macro scripts for cleaning up cell junction ROIs exported from **[Tissue Analyzer (Java edition)](https://github.com/baigouy/tissue_analyzer)**, removing unwanted vertices and curved borders before quantitative analysis.
+ImageJ macro scripts for cleaning up cell junction ROIs exported from **[Tissue Analyzer (TA)](https://github.com/baigouy/tissue_analyzer)**, removing unwanted vertices and curved borders before quantitative analysis.
 
 ## Background
 
-A workflow (see [Zhang et. al.](https://www.biorxiv.org/content/10.1101/2024.08.29.610110v1) for more details) for extracting cell borders from epithelial images in Tissue Analyzer (Java) is:
+A workflow (see [Zhang et. al.](https://www.biorxiv.org/content/10.1101/2024.08.29.610110v1) for more details) for extracting cell borders from epithelial images in TA is:
 
 1. Import a raw fluorescence image marks cell border (e.g., E-cadherin–GFP)
 2. Apply Gaussian filtering and contrast enhancement (e.g., [CLAHE](https://imagej.net/plugins/clahe))
@@ -31,6 +31,9 @@ These scripts remove unwanted ROIs using two straightforward geometric criteria:
 2. Curvature threshold: Curvature is defined as: `Curvature = Length / Feret diameter`
 
 where the [Feret diameter](https://imagej.net/ij/docs/menus/analyze.html#set) is the maximum caliper distance across the ROI. For a straight junction, `Length ≈ Feret`, giving a curvature near 1.0. Curved borders have a longer arc length relative to their end-to-end span, yielding curvature values substantially greater than 1.0. ROIs exceeding the curvature threshold are removed.
+
+![Example](https://github.com/isintron/ImageJ-Macros-for-Junction-ROI-Post-Processing/blob/main/Figures/001.png)
+
 
 ## Scripts
 

@@ -46,16 +46,18 @@ Filters all ROIs currently loaded in the ROI Manager by length and curvature.
 
 | Parameter      | Default                | Description                                                  |
 | -------------- | ---------------------- | ------------------------------------------------------------ |
-| `minLength`    | User-definition needed | Minimum ROI length (**same units as image calibration**). ROIs shorter than this are deleted. |
+| `minLength`    | User-defined           | Minimum ROI length (**same units as image calibration**). ROIs shorter than this are deleted. |
 | `maxCurvature` | 1.2                    | Maximum allowed curvature (Length / Feret). ROIs above this threshold are deleted. |
 
 4. A summary dialog reports the number of ROIs kept and deleted.
 
-> **Tip:** Run on a representative image first to verify that the defaults suit your data. Straight junctions in typical epithelial images have curvature values between 1.0–1.15; curved borders usually exceed 1.2–1.3.
+> Tip: Run on a representative image first to verify that the defaults suit your data. Straight junctions in typical epithelial images have curvature values between 1.0–1.15; curved borders usually exceed 1.2–1.3.
+>
+> Note: The unit of `minLength` follows the calibration of the image being measured. When exporting ROIs from Tissue Analyzer via Track Bonds, enabling "Open original image stack" usually opens an uncalibrated image (pixels only). In that case, apply the ROI Manager to your raw, calibrated image before running this script — otherwise `minLength` will be interpreted in pixels rather than physical units (e.g., µm).
 
 `kill_outside-of-square_rois.ijm`
 
-Restricts analysis to a user-defined rectangular region of interest by deleting all ROIs whose bounding box falls outside the drawn rectangle. Useful when you want to analyze only a specific subregion of the image (e.g., a region of interest within the germband) without re-segmenting.
+Restricts analysis to a user-defined rectangular region of interest by deleting all ROIs whose bounding box falls outside the drawn rectangle. Useful when you want to analyze only a specific subregion of the image (e.g., a region of interest within the tissue) without re-segmenting.
 
 **Usage:**
 
@@ -64,4 +66,4 @@ Restricts analysis to a user-defined rectangular region of interest by deleting 
 3. Run the script
 4. All ROIs not fully contained within the rectangle will be deleted; a confirmation dialog appears when complete
 
-> **Note:** The script uses a strict containment criterion — ROIs that merely overlap the rectangle boundary are also removed. To change this to overlap-based retention, comment out the default condition block and uncomment the alternative block at the bottom of the script.
+> Note: The script uses a strict containment criterion — ROIs that merely overlap the rectangle boundary are also removed. To change this to overlap-based retention, comment out the default condition block and uncomment the alternative block at the bottom of the script.
